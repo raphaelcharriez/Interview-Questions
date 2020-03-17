@@ -4,6 +4,7 @@
  * Themes: implementation, 2D array, loops
  * Comments: For interviews, quickly give the list of all possible magic arrays if candidate gets stuck
  * Follow up question: how can we generate the list of all possible magic arrays?
+ *      => Can be resolved by backtracking testing all of the possible row combinaison of sum 15 for instance.
  */
 
 

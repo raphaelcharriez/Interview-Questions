@@ -2,6 +2,8 @@
  * Problem: https://www.hackerrank.com/challenges/climbing-the-leaderboard/problem
  * Difficulty: Medium
  * Themes: implementation, array, sorting
+ * More: Dense Rank Implementation in Spark
+ *      https://github.com/apache/spark/blob/master/sql/catalyst/src/main/scala/org/apache/spark/sql/catalyst/expressions/windowExpressions.scala
  */
 
 
@@ -30,7 +32,7 @@ public class ClimbingTheLeaderboard {
         int index = 0;
         for(int i = 0; i<alice.length; i++){
 
-            index = binarySearch(discreteScores, index<0?0:index, discreteScores.length, alice[i]);
+            index = binarySearch(discreteScores, index<0 ? 0 : index, discreteScores.length, alice[i]);
 
             // the binarySearch implementation returns -(low -1) if the value is not found in the array.
             // In this case Alice is just after the low index.
