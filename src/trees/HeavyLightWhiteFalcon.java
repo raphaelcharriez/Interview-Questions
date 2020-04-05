@@ -44,6 +44,14 @@ public class HeavyLightWhiteFalcon {
         Assert.assertArrayEquals(new int[]{0, 0, 0, 0}, t.chainSegments[0].originalArray);
     }
 
+    @Test
+    public void solveProblem(){
+        int[][] queries = new int[][]{{1, 0, 1}, {1, 1, 2}, {2, 0, 2}};
+        int[][] tree = new int[][]{{0,1}, {1,2}};
+        Assert.assertArrayEquals(new int[]{2}, solve(tree, queries));
+    }
+
+
     public int[] solve(int[][] tree, int[][] queries) {
         // 1 Create a tree
         HeavyLightTree heavyLightTree = new HeavyLightTree(tree);
@@ -53,16 +61,20 @@ public class HeavyLightWhiteFalcon {
         heavyLightTree.assignChains();
         // 4 Implement the Segment Trees
         heavyLightTree.processChains();
-        // 5 TO DO: Answer queries
-
+        // 5 solve
 
         List<Integer> solution = new ArrayList<>();
 
         for (int[] q: queries){
-
+            if(q[0] == 1){
+                heavyLightTree.updateWeight(q[1], q[2]);
+            }
+            if(q[0] == 2){
+                solution.add(heavyLightTree.getMaxPath(q[1], q[2]));
+            }
         }
 
-        int[] getSolution = new int[solution.size()];
+        int[] getSolution = solution.stream().mapToInt(Integer::intValue).toArray();
         return getSolution;
     }
 
@@ -189,6 +201,45 @@ public class HeavyLightWhiteFalcon {
             }
         }
 
+        public void updateWeight(int nodeIndex, int newValue){
+            TreeNode node = myTree[nodeIndex];
+            chainSegments[node.chain].updateValue(node.positionInChain, newValue);
+        }
+
+        public int getMaxPath(int firstNode, int secondNode){
+            int maxSeen = 0 ;
+            while (myTree[firstNode].chain != myTree[secondNode].chain){
+                // can be refactored
+                if (myTree[firstNode].depth < myTree[secondNode].depth) {
+                    int tempNode = firstNode;
+                    firstNode = secondNode;
+                    secondNode = tempNode;
+                }
+                int segmentIndex = myTree[firstNode].chain;
+                MaxSegmentTree currentSegment = chainSegments[segmentIndex];
+                maxSeen = Math.max(
+                        maxSeen,
+                        currentSegment.getIntervalAggregate(
+                                0,
+                                myTree[firstNode].positionInChain)
+                );
+                // go to start of the chain we just went through and jump to parrent
+                firstNode = myTree[chainToNodes[segmentIndex].get(0)].parrentIndex;
+            };
+            int segmentIndex = myTree[firstNode].chain;
+            MaxSegmentTree currentSegment = chainSegments[segmentIndex];
+            maxSeen = Math.max(
+                    maxSeen,
+                    currentSegment.getIntervalAggregate(
+                            myTree[firstNode].positionInChain,
+                            myTree[secondNode].positionInChain)
+            );
+
+
+            return maxSeen;
+
+        }
+
     }
 
     class TreeNode {
@@ -258,6 +309,9 @@ public class HeavyLightWhiteFalcon {
             return originalArray;
         }
 
+        int getValue(int index){
+            return originalArray[index];
+        }
 
         void updateValue(int index, int newValue){
             originalArray[index] = newValue;

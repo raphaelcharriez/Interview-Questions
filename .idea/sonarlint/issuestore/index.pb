@@ -9,3 +9,5 @@ b
 2src/stacks_and_queues/CctiQueueUsingTwoStacks.java,b/d/bd17232d66e4931d770ad5eb333c67008683980f
 U
 %src/trees/TreePostOrderTraversal.java,a/6/a683ed63e93ce2ea8b23a154c81bb49493f05e48
+T
+$src/trees/HeavyLightWhiteFalcon.java,f/2/f28fe2d4eb083cf099cb6696f0d86bdcd43cb2ac
