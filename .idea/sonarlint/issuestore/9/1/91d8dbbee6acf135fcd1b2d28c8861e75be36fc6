@@ -1,0 +1,16 @@
+
+t
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 33 to the 15 allowed.(»Óşæıÿÿÿÿ8ñÀŠÃ.
+r
+java:S1149#"PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(†öºÙúÿÿÿÿ8ç¢ÌÃ.
+[
+java:S2130-"9Use "Integer.parseInt" for this string-to-int conversion.(¥‘•şÿÿÿÿ8Åğ³Ä.
+M
+java:S1128"+Remove this unused import 'java.util.List'.(Õë±Äøÿÿÿÿ8¤Ä´Â.
+V
+java:S2130,"9Use "Integer.parseInt" for this string-to-int conversion.(«–Ñı8ƒœ„Å.
+K
+java:S1128"/Remove this unused import 'jdk.jfr.StackTrace'.(ŞŞçS8”¨´Ã.
+r
+java:S1149""PReplace the synchronized class "Stack" by an unsynchronized one such as "Deque".(€ËÄ¨ıÿÿÿÿ8ç¢ÌÃ.
+Z	java:S106*"9Replace this use of System.out or System.err by a logger.(Ğ©•èÿÿÿÿÿ8²Å.

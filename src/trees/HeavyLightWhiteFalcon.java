@@ -49,6 +49,9 @@ public class HeavyLightWhiteFalcon {
         int[][] queries = new int[][]{{1, 0, 1}, {1, 1, 2}, {2, 0, 2}};
         int[][] tree = new int[][]{{0,1}, {1,2}};
         Assert.assertArrayEquals(new int[]{2}, solve(tree, queries));
+        queries = new int[][]{{1, 0, 1}, {1, 1, 2}, {2, 0, 2}, {2, 0, 4}};
+        tree = new int[][]{{0,1}, {1,2}, {2, 3}, {0, 4}};
+        Assert.assertArrayEquals(new int[]{2, 1}, solve(tree, queries));
     }
 
 
@@ -209,7 +212,6 @@ public class HeavyLightWhiteFalcon {
         public int getMaxPath(int firstNode, int secondNode){
             int maxSeen = 0 ;
             while (myTree[firstNode].chain != myTree[secondNode].chain){
-                // can be refactored
                 if (myTree[firstNode].depth < myTree[secondNode].depth) {
                     int tempNode = firstNode;
                     firstNode = secondNode;
@@ -223,7 +225,7 @@ public class HeavyLightWhiteFalcon {
                                 0,
                                 myTree[firstNode].positionInChain)
                 );
-                // go to start of the chain we just went through and jump to parrent
+                // go to start of the chain we just checked and jump to parrent
                 firstNode = myTree[chainToNodes[segmentIndex].get(0)].parrentIndex;
             };
             int segmentIndex = myTree[firstNode].chain;
@@ -231,8 +233,8 @@ public class HeavyLightWhiteFalcon {
             maxSeen = Math.max(
                     maxSeen,
                     currentSegment.getIntervalAggregate(
-                            myTree[firstNode].positionInChain,
-                            myTree[secondNode].positionInChain)
+                            Math.min( myTree[firstNode].positionInChain, myTree[secondNode].positionInChain),
+                            Math.max( myTree[firstNode].positionInChain, myTree[secondNode].positionInChain))
             );
 
 

@@ -1,0 +1,15 @@
+
+L
+java:S5411%"*Use the primitive boolean expression here.(ƒ’ûÿÿÿÿÿ8Éóë¤.
+Q
+java:S1128	"4Remove this unused import 'java.lang.reflect.Array'.(‡¡É˜8çåÃ¤.
+G
+java:S54112"*Use the primitive boolean expression here.(å®€Ø8ßª¥.
+{
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ì»“Œùÿÿÿÿ8¾§Ù£.
+G
+java:S5411-"*Use the primitive boolean expression here.(™…Øï8ï®Ô¥.
+C
+java:S1481"&Remove this unused "t" local variable.(ŒÄÉ¸8­ä£¢.
+R
+java:S1854"5Remove this useless assignment to local variable "t".(ŒÄÉ¸8­ä£¢.
