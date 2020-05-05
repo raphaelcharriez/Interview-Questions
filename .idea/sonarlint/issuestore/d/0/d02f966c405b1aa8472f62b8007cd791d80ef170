@@ -1,5 +1,5 @@
 
-R
-java:S18547"5Remove this useless assignment to local variable "n".(ãà„†8ð Æ±›.
 C
 java:S14817"&Remove this unused "n" local variable.(ãà„†8ð Æ±›.
+R
+java:S18547"5Remove this useless assignment to local variable "n".(ãà„†8ð Æ±›.
